@@ -1,0 +1,22 @@
+For the final project, I want to create a ‘Dancing Platform’.
+
+The object will include 2 Arduino, 2 motors, 1 or 2 light sensor, several LEDs, and other support materials.
+Arduino1 will control motor1 and all LEDS;
+Arduino2 will control motor2 and sensors;
+
+Object will involve as two layout.
+
+Layout1 (lower) motor1 controls a circle platform1; 
+LEDs all around the rim of the platform; 
+LEDs will be controlled by program in serval arrays; 
+Motor1 keep rotating in one direction. 
+Two light sensors will be fixed on platform1.
+
+Layout2 (upper) motor2 controls a smaller circle platform2; 
+‘Dancers’ and other structures will shown on the platform2;
+Light sensors will respond to these structures. 
+
+Light sensor1 controls direction;
+Light sensor2 controls speed.
+
+The object will use battery for power
