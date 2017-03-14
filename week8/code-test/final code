@@ -1,0 +1,81 @@
+
+#include <Servo.h>
+// this constant won't change:
+Servo myservo;  // create servo object to control a servo
+const int  buttonPin = 2;    // the pin that the pushbutton is attached to
+
+// Variables will change:
+int buttonPushCounter = 0;   // counter for the number of button presses
+int buttonState = 0;         // current state of the button
+int lastButtonState = 0;     // previous state of the button
+
+
+
+void setup() {
+  // initialize the button pin as a input:
+  pinMode(buttonPin, INPUT);
+
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+
+  // initialize serial communication:
+  Serial.begin(9600);
+  int index = buttonPushCounter % 5;
+}
+
+
+
+void loop() {
+  // read the pushbutton input pin:
+  buttonState = digitalRead(buttonPin);
+  int positions[5];
+  positions[0] = 0;
+  positions[1] = 30;
+  positions[2] = 60;
+  positions[3] = 90;
+  positions[4] = 120;
+ 
+   for(int index = 0; index < 5; index ++);
+  // compare the buttonState to its previous state
+  if (buttonState != lastButtonState) {
+    // if the state has changed, increment the counter
+    if (buttonState == HIGH) {
+      // if the current state is HIGH then the button
+      // wend from off to on:
+      buttonPushCounter++;
+      Serial.println("on");
+      Serial.print("number of button pushes:  ");
+      Serial.println(buttonPushCounter);
+
+       if (buttonPushCounter == 0) {
+  myservo.write(positions[0]);
+} else if (buttonPushCounter == 1) {
+  myservo.write(positions[1]);
+}else if (buttonPushCounter == 2) {
+  myservo.write(positions[2]);
+  }else if (buttonPushCounter == 3) {
+  myservo.write(positions[3]);
+  }  else if (buttonPushCounter == 4) {
+  myservo.write(positions[4]);
+    } else if (buttonPushCounter == 5) {
+  myservo.write(positions[5]);
+    }
+    
+     
+    }
+    else {
+  
+      Serial.println("off");
+      
+    delay(100);
+  }
+  
+
+lastButtonState = buttonState;
+ if (buttonPushCounter % 5 == 0) {
+   buttonPushCounter = 0;
+ }else
+   lastButtonState = buttonState;
+  }
+  
+  
+  }
