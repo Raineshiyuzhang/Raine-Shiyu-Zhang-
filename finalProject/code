@@ -1,0 +1,60 @@
+// RemoteXY select connection mode and include library  
+#define REMOTEXY_MODE__SOFTSERIAL
+#include <SoftwareSerial.h> 
+
+#include <RemoteXY.h> 
+
+// RemoteXY connection settings  
+#define REMOTEXY_SERIAL_RX 2 
+#define REMOTEXY_SERIAL_TX 3 
+#define REMOTEXY_SERIAL_SPEED 9600 
+
+
+// RemoteXY configurate   
+#pragma pack(push, 1) 
+uint8_t RemoteXY_CONF[] = 
+  { 255,3,0,0,0,35,0,6,5,0,
+  1,0,13,19,37,37,2,49,0,1,
+  0,65,31,23,23,2,50,0,2,0,
+  55,8,37,12,2,79,78,0,79,70,
+  70,0 }; 
+   
+// this structure defines all the variables of your control interface  
+struct { 
+
+    // input variable
+  uint8_t button_1; // =1 if button pressed, else =0 
+  uint8_t button_2; // =1 if button pressed, else =0 
+  uint8_t switch_1; // =1 if switch ON and =0 if OFF 
+
+    // other variable
+  uint8_t connect_flag;  // =1 if wire connected, else =0 
+
+} RemoteXY; 
+#pragma pack(pop) 
+
+
+#define PIN_BUTTON_1 13    // control the wheel1
+#define PIN_BUTTON_2 12    // control the wheel2
+#define PIN_SWITCH_1 10    // control the LEDS
+
+
+void setup()  
+{ 
+  RemoteXY_Init ();  
+   
+  pinMode (PIN_BUTTON_1, OUTPUT);
+  pinMode (PIN_BUTTON_2, OUTPUT);
+  pinMode (PIN_SWITCH_1, OUTPUT);
+   
+} 
+
+void loop()  
+{  
+  RemoteXY_Handler (); 
+   
+  digitalWrite(PIN_BUTTON_1, (RemoteXY.button_1==0)?LOW:HIGH);
+  digitalWrite(PIN_BUTTON_2, (RemoteXY.button_2==0)?LOW:HIGH);
+  digitalWrite(PIN_SWITCH_1, (RemoteXY.switch_1==0)?LOW:HIGH);
+   
+}
