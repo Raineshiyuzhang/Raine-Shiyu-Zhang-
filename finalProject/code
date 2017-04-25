@@ -43,8 +43,8 @@ void setup()
 { 
   RemoteXY_Init ();  
   
-  analogWrite(PIN_BUTTON_1, 100); 
-  analogWrite(PIN_BUTTON_2, 255);
+  analogWrite(PIN_BUTTON_1, 100);       //control the speed for upper layout
+  analogWrite(PIN_BUTTON_2, 255);       //control the speed for lower layout(music box)
    
   pinMode (PIN_BUTTON_1, OUTPUT);
   pinMode (PIN_BUTTON_2, OUTPUT);
