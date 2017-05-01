@@ -58,6 +58,6 @@ void loop()
    
   digitalWrite(PIN_BUTTON_1, (RemoteXY.button_1==0)?LOW:HIGH);
   digitalWrite(PIN_BUTTON_2, (RemoteXY.button_2==0)?LOW:HIGH);
-  digitalWrite(PIN_SWITCH_1, (RemoteXY.switch_1==0)?LOW:HIGH);
+  digitalWrite(PIN_SWITCH_1, (RemoteXY.switch_1==0)?LOW:HIGH);   // switch on when push the button on smartphone
    
 }
